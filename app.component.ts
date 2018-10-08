@@ -37,61 +37,58 @@ export class AppComponent {
   }
   json =[
     {
-      "firstName": "siva",
-      "lastName": "prasanna",
-      "email": "vsp.anjaneyulu@gmail.com"
+      "firstName": "aa",
+      "lastName": "aaa",
+      "email": "aa.aa@gmail.com"
     },
     {
-      "firstName": "siva",
-      "lastName": "prasanna",
-      "email": "vsp.anjaneyulu@gmail.com"
+      "firstName": "bbbb",
+      "lastName": "bb",
+      "email": "bb.bb@gmail.com"
     },
     {
-      "firstName": "satish",
-      "lastName": "kumar",
-      "email": "satish@gmail.com"
+      "firstName": "cc",
+      "lastName": "kuccmar",
+      "email": "cc@gmail.com"
     },
     {
-      "firstName": "shiva",
-      "lastName": "dandu",
-      "email": "dandusiva@gmail.com"
+      "firstName": "dd",
+      "lastName": "daddndu",
+      "email": "ddd@gmail.com"
     },
     {
-      "firstName": "mani",
-      "lastName": "dandu",
-      "email": "manidandu@gmail.com"
+      "firstName": "ee",
+      "lastName": "edd",
+      "email": "deee@gmail.com"
     },
     {
-      "firstName": "venkat",
-      "lastName": "kumar",
-      "email": "venkat/kumar@gmail.com"
+      "firstName": "ff",
+      "lastName": "ff",
+      "email": "venkfffat/kumar@gmail.com"
     },
     {
-      "firstName": "renuka",
-      "lastName": "kasarla",
-      "email": "renu.kasarla@gmail.com"
+      "firstName": "gg",
+      "lastName": "ggggg",
+      "email": "reggggnu.ggg@gmail.com"
     },
     {
-      "firstName": "tanooja",
-      "lastName": "ABc",
-      "email": "tanoo.abc@gmail.com"
+      "firstName": "hhh",
+      "lastName": "ABhhc",
+      "email": "tahhhnoo.abc@gmail.com"
     },
     {
-      "firstName": "eswar",
-      "lastName": "katre",
-      "email": "katreeswar@gmail.com"
+      "firstName": "iiii",
+      "lastName": "iii",
+      "email": "iii@gmail.com"
     }
   ];
   //union variable
   unvar;
   addrow(){
-    // console.log(this.add);
-    // this.json = _.concat(this.add);
+
     console.log(this.json)
-    // _.concat(this.json, [this.add]);
-    // _.join(this.json, 'this.add');
+   
    this.unvar = _.unionBy(this.json, [this.add]);
-    // console.log(this.unvar);
     this.json = this.unvar;
     this.unvar ={};
   }
