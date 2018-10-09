@@ -1,34 +1,13 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<!-- <div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
- -->
-
- <div class="container-fluid">
-   <div class="container">
-     <div class="row">
-       <div class="col">
+<div class="container-fluid">
+  <div class="container">
+    <div class="row">
+      <div class="col">
         <div class="card text-center">
           <div class="card-header">
             CRUD Operations
           </div>
           <div class="card-body">
-            <table class="table table-hover table-responsive">
+            <table class="table table-hover">
               <thead>
                 <tr>
                   <th>First Name</th>
@@ -37,7 +16,7 @@
                   <th></th>
                   <th></th>
                   <th></th>
-                  <th><button class="btn btn-success" (click)="addOpenModal(addRow);">Add Row</button></th>
+                  <th><button class="btn btn-success" (click)="viewOpenModal(addRow);">Add Row</button></th>
                 </tr>
               </thead>
               <tbody>
@@ -45,9 +24,9 @@
                   <td>{{td.firstName}}</td>
                   <td>{{td.lastName}}</td>
                   <td>{{td.email}}</td>
-                  <td><button class="btn btn-info" (click)="view(td); viewOpenModal(viewdata);">View</button></td>
-                  <td><button class="btn btn-secondary" (click)="update(td); updateOpenModal(updatedata);">Update</button></td>
-                  <td><button class="btn btn-danger" (click)="delete(); showSuccess();">Delete</button></td>
+                  <td><button class="btn  btn-sm btn-info" (click)="view(td); viewOpenModal(viewdata);">View</button></td>
+                  <td><button class="btn btn-sm btn-secondary" (click)="update(td); viewOpenModal(updatedata);">Update</button></td>
+                  <td><button class="btn btn-sm btn-danger" (click)="delete(td); ">Delete</button></td>
                 </tr>
               </tbody>
             </table>
@@ -64,16 +43,13 @@
             </button>
           </div>
           <div class="modal-body">
-            <table class="table table-hover table-responsive">
+            <table class="table table-hover">
               <tr>
                 <td>{{dataview.firstName}}</td>
                 <td>{{dataview.lastName}}</td>
                 <td>{{dataview.email}}</td>
               </tr>
             </table>
-          </div>
-          <div class="modal-footer">
-              This is Footer
           </div>
         </ng-template>
         <ng-template #updatedata>
@@ -86,14 +62,14 @@
           <div class="modal-body">
             <table class="table table-hover table-responsive">
               <tr>
-                <td contenteditable="true">{{updateview.firstName}}</td>
-                <td contenteditable="true">{{updateview.lastName}}</td>
-                <td contenteditable="true">{{updateview.email}}</td>
+                <td><input type="text" [(ngModel)]="updateview.firstName"></td>
+                <td><input type="text" [(ngModel)]="updateview.lastName"></td>
+                <td><input type="text" [(ngModel)]="updateview.email"></td>
+                <td></td>
+                <td><button class=  "btn btn-success btn-sm" (click)="modalRef.hide(); swalAlt(updateview);">Update
+                    Row</button></td>
               </tr>
             </table>
-          </div>
-          <div class="modal-footer">
-              This is Footer
           </div>
         </ng-template>
         <ng-template #addRow>
@@ -104,7 +80,7 @@
             </button>
           </div>
           <div class="modal-body">
-            <table class="table table-hover table-responsive">
+            <table class="table">
               <thead>
                 <tr>
                   <td>First Name</td>
@@ -113,22 +89,26 @@
                 </tr>
               </thead>
               <tbody>
-              <tr>
-                <td><input type="text" [(ngModel)]="add.firstname"></td>
-                <td><input type="text" [(ngModel)]="add.lastname"></td>
-                <td><input type="text" [(ngModel)]="add.email"></td>
-              </tr>
-            </tbody>
-            <tfoot>
-              <button class="btn btn-info float-right" (click)="addrow();">Add Row</button>
-            </tfoot>
+                <tr>
+                  <td><input type="text" [(ngModel)]="add.firstName"></td>
+                  <td><input type="text" [(ngModel)]="add.lastName"></td>
+                  <td><input type="text" [(ngModel)]="add.email"></td>
+                </tr>
+              </tbody>
             </table>
-          </div>
-          <div class="modal-footer">
-              This is Footer
+            <div class="text-center">
+              <button class="btn btn-info btn-sm float-center" (click)="addrow(add); modalRef.hide();">Add
+                Row</button>
+            </div>
           </div>
         </ng-template>
-       </div>
-     </div>
-   </div>
- </div>
+
+        <ng-template>
+          <div class="modal-header">
+            Please Login to Page
+          </div>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</div>
