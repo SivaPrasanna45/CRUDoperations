@@ -11,19 +11,21 @@ import Swal from 'sweetalert2';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+
   title = 'myProj';
   add = {};
   dataview;
   updateview;
+  numberOfPages?: number;
+  modalRef: BsModalRef;
+  currentPage = 1;
   json = [
-   //Your Json Data // array of objects
+    ///Your data (array of objects)
   ];
 
-  modalRef: BsModalRef;
   constructor(private modalService: BsModalService, private toastr: ToastrService) { }
   ngOnInit() {
 
-    // this.defaultModal().nativeElement.click();
   }
   defaultModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
@@ -41,7 +43,7 @@ export class AppComponent implements OnInit {
   }
 
   addrow(add) {
-    this.toastr.success(add.firstName + 'Row succesfully added!');
+    this.toastr.success(add.firstName + '   Row succesfully added!');
     this.json = _.unionBy(this.json, [add]);
     this.add = {};
   }
