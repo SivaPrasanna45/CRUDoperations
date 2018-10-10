@@ -14,20 +14,22 @@
                   <th>last Name</th>
                   <th>Email</th>
                   <th></th>
+                  <th><input type="text" [(ngModel)]="srch"></th>
                   <th></th>
-                  <th></th>
-                  <th><button class="btn btn-success" (click)="viewOpenModal(addRow);">Add Row</button></th>
+                  <th><button class="btn btn-success" (click)="viewOpenModal(addRow);"><i class="fa fa-address-card"></i></button></th>
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let td of json">
-                  <td>{{td.firstName}}</td>
+                <tr *ngFor="let td of json | paginate: { itemsPerPage: 10, currentPage: currentPage }">
+                  <td>{{td.firstName | filter:srch }}</td>
                   <td>{{td.lastName}}</td>
                   <td>{{td.email}}</td>
-                  <td><button class="btn  btn-sm btn-info" (click)="view(td); viewOpenModal(viewdata);">View</button></td>
-                  <td><button class="btn btn-sm btn-secondary" (click)="update(td); viewOpenModal(updatedata);">Update</button></td>
-                  <td><button class="btn btn-sm btn-danger" (click)="delete(td); ">Delete</button></td>
+                  <td><button class="btn  btn-sm btn-info" (click)="view(td); viewOpenModal(viewdata);"><i class="fa fa-eye-slash"></i></button></td>
+                  <td><button class="btn btn-sm btn-secondary" (click)="update(td); viewOpenModal(updatedata);"><i
+                        class="fa fa-edit"></i></button></td>
+                  <td><button class="btn btn-sm btn-danger" (click)="delete(td); "><i class="fa fa-trash"></i></button></td>
                 </tr>
+                <pagination-controls (pageChange)="currentPage = $event"></pagination-controls>
               </tbody>
             </table>
           </div>
@@ -66,7 +68,7 @@
                 <td><input type="text" [(ngModel)]="updateview.lastName"></td>
                 <td><input type="text" [(ngModel)]="updateview.email"></td>
                 <td></td>
-                <td><button class=  "btn btn-success btn-sm" (click)="modalRef.hide(); swalAlt(updateview);">Update
+                <td><button class="btn btn-success btn-sm" (click)="modalRef.hide(); swalAlt(updateview);">Update
                     Row</button></td>
               </tr>
             </table>
